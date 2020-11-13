@@ -28,9 +28,9 @@ summary(model)
 
 model %>% 
   compile(
-    loss = loss_binary_crossentropy,
+    loss = loss_binary_crossentropy, # mesma coisa que a logloss no caso binario
     optimizer = optimizer_sgd(lr = 0.1),
-    metrics = "accuracy"
+    metrics = "accuracy" # para printar a metrica da acuracia pq a logloss eh dificil de ter a sensibilidade de variacao
   )
 
 # Model fitting ---------------------------------------------------
