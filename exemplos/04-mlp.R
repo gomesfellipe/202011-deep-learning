@@ -19,10 +19,10 @@ y <- relu(x %*% W + B) %*% V + a
 
 # Model definition ---------------------------------------------
 
-input <- layer_input(shape = 2)
+input <- layer_input(shape = 2) # pq o dataset tem 2 colunas
 
 output <- input %>% 
-  layer_dense(units = 2, activation = "relu") %>% 
+  layer_dense(units = 2, activation = "relu") %>% # duas unidades escondidas (escolhida de forma arbitraria)
   layer_dense(units = 1)
 
 model <- keras_model(input, output)
@@ -47,3 +47,4 @@ model %>%
 
 get_weights(model)
 predict(model, x)
+get_weights(get_layer(model, index =2))
