@@ -55,17 +55,17 @@ b <- 0
 lr <- 0.1
 
 for (step in 1:500) {
-    
-    y_hat <- model(w1, w2, b, x1, x2)
-    
-    w1 <- w1 - lr*mean(dl_dyhat(y_hat) * dyhat_dw1(w1))
-    w2 <- w2 - lr*mean(dl_dyhat(y_hat) * dyhat_dw2(w2))
-    b <- b - lr*mean(dl_dyhat(y_hat) * dyhat_db(b))
-    
-    if (step %% 10 == 0) {
-      print(loss(y, y_hat))
-    }
-    
+  
+  y_hat <- model(w1, w2, b, x1, x2)
+  
+  w1 <- w1 - lr*mean(dl_dyhat(y_hat) * dyhat_dw1(w1))
+  w2 <- w2 - lr*mean(dl_dyhat(y_hat) * dyhat_dw2(w2))
+  b <- b - lr*mean(dl_dyhat(y_hat) * dyhat_db(b))
+  
+  if (step %% 10 == 0) {
+    print(loss(y, y_hat))
+  }
+  
 }
 
 w1
