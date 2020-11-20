@@ -37,4 +37,6 @@ model %>%
 
 get_weights(model)
 
-
+fit = predict(model, x)
+plot(fit, y)
+yardstick::mape_vec(as.numeric(y), as.numeric(fit))

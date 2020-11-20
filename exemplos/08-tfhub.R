@@ -16,11 +16,11 @@ library(tfhub)
 input <- layer_input(shape = c(32, 32, 3))
 
 output <- input %>% 
-  layer_lambda(f = function(x) tf$image$resize(x, size = c(96L,96L))) %>% 
+  layer_lambda(f = function(x) tf$image$resize(x, size = c(96L,96L))) %>% # ajustar o tamanho da imagem pq eh assim que o modelo pretreinado espera
   layer_hub(
     handle = "https://tfhub.dev/google/imagenet/mobilenet_v2_075_96/feature_vector/4", 
     # handle = "https://tfhub.dev/tensorflow/efficientnet/b4/feature-vector/1",
-    trainable = FALSE
+    trainable = FALSE # deixa esse modelo do jeito que esta com os mesmos pesos. nao sera treinavel
   ) %>% 
   layer_dense(128, activation = "relu") %>% 
   layer_dense(10, activation = "softmax") 
