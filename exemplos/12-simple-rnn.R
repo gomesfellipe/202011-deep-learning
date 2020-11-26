@@ -18,17 +18,19 @@ for(i in 1:n) {
 }
 
 plot(x[6,,])
+x
+# queremos prever se est subindo ou descendo
 
 # Model ------------------------------------------------------------
 
 # use float64 for comparison with R
-tensorflow::tf$keras$backend$set_floatx("float64") 
+tensorflow::tf$keras$backend$set_floatx("float64")  # para resultado bater com contas na mao do R
 
 input <- layer_input(shape = c(l,1))
 
 output <- input %>% 
   layer_simple_rnn(units = 1, 
-                   activation = "sigmoid", use_bias = FALSE)
+                   activation = "sigmoid", use_bias = FALSE) # bias = False para simplificar as contas
 
 model <- keras_model(input, output)
 
